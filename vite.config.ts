@@ -4,11 +4,4 @@ export default defineConfig({
   vite: {
     base: process.env["BASE_URL"] || "/",
   },
-  nitro: {
-    preset: "cloudflare-pages-static",
-    output: {
-      dir: ".output",
-      publicDir: ".output/public",
-    },
-  },
 });
