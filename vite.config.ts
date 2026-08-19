@@ -5,7 +5,7 @@ export default defineConfig({
     base: process.env["BASE_URL"] || "/",
   },
   nitro: {
-    preset: "github-pages",
+    preset: "cloudflare-pages-static",
     output: {
       dir: ".output",
       publicDir: ".output/public",
