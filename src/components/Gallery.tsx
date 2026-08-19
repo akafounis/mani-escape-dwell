@@ -10,7 +10,7 @@ function GalleryImage({
   index: number;
   onOpen: (i: number) => void;
 }) {
-  const photo = stay.photos[index];
+  const photo = stay.photos[index]!;
   const { ref, visible } = useReveal<HTMLButtonElement>(0.1);
   const tall = photo.h > photo.w;
 
@@ -64,7 +64,7 @@ export function Gallery() {
     };
   }, [open, close, step]);
 
-  const active = open === null ? null : stay.photos[open];
+  const active = open === null ? null : (stay.photos[open] ?? null);
 
   return (
     <section id="photos" className="px-3 pb-24 sm:px-6 md:pb-32">
