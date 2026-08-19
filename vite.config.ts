@@ -4,5 +4,11 @@ export default defineConfig({
   vite: {
     base: process.env["BASE_URL"] || "/",
   },
-  nitro: false,
+  nitro: {
+    preset: "static",
+    output: {
+      dir: ".output",
+      publicDir: ".output/public",
+    },
+  },
 });
