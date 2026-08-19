@@ -1,24 +1,48 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/Hero";
+import { About } from "@/components/About";
+import { Gallery } from "@/components/Gallery";
+import { Location } from "@/components/Location";
+import { BookingForm } from "@/components/BookingForm";
+import { StickyBookBar } from "@/components/StickyBookBar";
+import { stay } from "@/content/stay";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Petra Studio — Stone studio apartment in Mani, Greece";
+const description =
+  "A minimal one-room stone studio above the sea in Mani, Greece. Private terrace, sea views, olive terraces — send a booking request directly to the owners.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main>
+      <Hero />
+      <About />
+      <Gallery />
+      <Location />
+      <BookingForm />
+
+      <footer className="border-t border-border px-6 py-12 pb-28 text-center sm:px-10 md:pb-12">
+        <p className="font-[family-name:var(--font-display)] text-2xl">{stay.name}</p>
+        <p className="eyebrow mt-3">{stay.location}</p>
+        <p className="mt-6 text-xs text-muted-foreground">
+          {stay.phone} · {stay.email}
+        </p>
+      </footer>
+
+      <StickyBookBar />
+    </main>
   );
 }
