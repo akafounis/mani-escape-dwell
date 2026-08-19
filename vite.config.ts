@@ -17,5 +17,9 @@ export default defineConfig({
   },
   nitro: {
     preset: "static",
+    output: {
+      dir: ".output",
+      publicDir: ".output/public",
+    },
   },
 });
